@@ -1,0 +1,8 @@
+.DS_Store
+.dart_tool/
+build/
+.idea/
+*.iml
+.vscode/
+pubspec_overrides.yaml
+coverage/

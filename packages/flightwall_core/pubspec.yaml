@@ -1,0 +1,16 @@
+name: flightwall_core
+description: Pure-Dart flight data layer for FlightWall displays (OpenSky + AeroAPI).
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  http: ^1.2.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.0
