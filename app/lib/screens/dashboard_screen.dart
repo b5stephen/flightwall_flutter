@@ -34,6 +34,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       onShow: _c.resume,
     );
     _c.addListener(_maybePromptForSettings);
+    // Settings may have finished loading before this screen existed.
+    _maybePromptForSettings();
   }
 
   @override

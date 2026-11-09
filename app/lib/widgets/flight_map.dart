@@ -43,16 +43,18 @@ class _FlightMapState extends State<FlightMap> {
     }
   }
 
-  void _fit() {
+  CameraFit get _cameraFit {
     final box = BoundingBox.around(widget.center, widget.radiusKm);
-    _map.fitCamera(CameraFit.bounds(
+    return CameraFit.bounds(
       bounds: LatLngBounds(
         LatLng(box.latMin, box.lonMin),
         LatLng(box.latMax, box.lonMax),
       ),
       padding: const EdgeInsets.all(24),
-    ));
+    );
   }
+
+  void _fit() => _map.fitCamera(_cameraFit);
 
   @override
   Widget build(BuildContext context) {
@@ -62,23 +64,20 @@ class _FlightMapState extends State<FlightMap> {
       child: FlutterMap(
         mapController: _map,
         options: MapOptions(
-          initialCenter: _center,
-          initialZoom: 11,
+          // Must be the initial fit: calling fitCamera from onMapReady moves
+          // the camera before TileLayer subscribes, so tiles are placed for
+          // the old camera and end up off-screen.
+          initialCameraFit: _cameraFit,
           backgroundColor: const Color(0xFF0B0E13),
-          onMapReady: () {
-            _ready = true;
-            _fit();
-          },
+          onMapReady: () => _ready = true,
           onTap: (_, __) => widget.onSelect(null),
         ),
         children: [
-          // Dark-ish basemap: standard OSM tiles, inverted and dimmed.
-          ColorFiltered(
-            colorFilter: const ColorFilter.matrix(_darkMap),
-            child: TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              userAgentPackageName: 'com.flightwall.app',
-            ),
+          // Standard OSM tiles, inverted and hue-rotated for a dark theme.
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.flightwall.app',
+            tileBuilder: darkModeTileBuilder,
           ),
           CircleLayer(circles: [
             CircleMarker(
@@ -171,11 +170,3 @@ class _PlaneMarker extends StatelessWidget {
     );
   }
 }
-
-/// Inverts the light OSM style and pulls it toward a dim blue-grey.
-const _darkMap = <double>[
-  -0.45, 0, 0, 0, 125, //
-  0, -0.45, 0, 0, 130,
-  0, 0, -0.45, 0, 140,
-  0, 0, 0, 1, 0,
-];
