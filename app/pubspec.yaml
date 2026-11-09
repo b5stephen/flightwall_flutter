@@ -1,5 +1,5 @@
 name: flightwall_app
-description: Tablet dashboard for live flights overhead, a companion to TheFlightWall.
+description: Tablet dashboard for live flights overhead, an unofficial companion to TheFlightWall.
 publish_to: 'none'
 version: 0.1.0+1
 

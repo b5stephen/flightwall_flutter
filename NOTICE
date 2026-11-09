@@ -1,0 +1,15 @@
+FlightWall Flutter
+Copyright 2026 Stephen Denekamp
+
+This product includes software derived from TheFlightWall OSS
+(https://github.com/AxisNimble/TheFlightWall_OSS), licensed under the
+Apache License, Version 2.0.
+
+The flight data logic in packages/flightwall_core (OpenSky state-vector
+fetching, AeroAPI flight lookup, FlightWall CDN name lookup, and the
+geographic helpers) is a Dart port of that project's ESP32 firmware, with
+modifications: anonymous OpenSky access, per-callsign caching of AeroAPI
+results, selection of the airborne flight leg, parallel lookups, and
+TLS certificate verification.
+
+This project is not affiliated with or endorsed by TheFlightWall.
