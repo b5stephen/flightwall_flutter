@@ -1,11 +1,11 @@
-# FlightWall for tablets
+# Flight Wall Flutter
 
 A wall-mountable tablet display that shows the aircraft flying over your home,
 live. A dark map shows each plane at its position and heading, and a list
 beside it shows the flights closest-first with their altitude, speed and
 climb rate. Add a FlightAware key to see airline, route and aircraft type too.
 
-![Tablet dashboard: dark map of San Francisco with one aircraft, SWA3231, and its flight card](docs/dashboard.jpg)
+![Tablet dashboard: dark map of San Francisco with one aircraft, UAL1341, and its flight card](docs/dashboard.jpg)
 
 This is an unofficial companion to
 [TheFlightWall](https://github.com/AxisNimble/TheFlightWall_OSS), an ESP32 LED

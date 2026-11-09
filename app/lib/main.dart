@@ -24,7 +24,7 @@ class FlightWallApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FlightWall',
+      title: 'Flight Wall Flutter',
       debugShowCheckedModeBanner: false,
       // A wall display runs all day: dark is easier on the room and on OLED.
       themeMode: ThemeMode.dark,

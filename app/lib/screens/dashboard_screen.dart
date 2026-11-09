@@ -143,7 +143,7 @@ class _StatusBar extends StatelessWidget {
         children: [
           Icon(Icons.flight, color: theme.colorScheme.primary),
           const SizedBox(width: 10),
-          Text('FlightWall', style: theme.textTheme.titleLarge),
+          Text('Flight Wall Flutter', style: theme.textTheme.titleLarge),
           const SizedBox(width: 24),
           Expanded(
             child: Text(
